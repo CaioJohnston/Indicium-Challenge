@@ -1,6 +1,6 @@
-# PIPELINE DONE AND TESTED IN A WINDOWS ENVIRONMENT
-# SOURCE DATABASE AND FINAL DATABASE ARE SET UP USING DOCKER COMPOSE
-# Used Libraries
+# Pipeline feita e testada em um ambiente Windows
+# Foi utilizado Docker Compose para "setar" as Databases
+# Bibliotecas utilizadas
 
 ```
 pandas #pip install pandas
@@ -11,23 +11,22 @@ python-dotenv #pip install python-dotenv
 datetime
 mysql.connector #pip install mysql-connector-python
 ```
-# BEFORE WE START
+# Setup inicial
 
-Open the ".env" file in the python folder. In the DIRECTORIES section, before "\Projeto-techincidium", provide the absolute path of where the project is on your machine.
-Put the credentials of the POSTGRES database in the "DB_" variables found in the docker-compose.yml file in \Projeto-techincidium.
-Put the credentials of the MYSQL database in the "MY_SQL_" variables found in the docker-compose.yml file in \final_data.
+Abra o arquivo ".env" em sua pasta onde o Python está instalado. Nos diretorios, antes de "\Projeto-techincidium", insira o absolute path de onde o projeto está salvo em seu PC.
+Entre com as credenciais do POSTGRES no "DB_" que esta dentro do arquivo: docker-compose.yml que por sua vez esta no \Projeto-techincidium.
+Entre com as credenciais do MYSQL no "MY_SQL_" que esta dentro do arquivo: docker-compose.yml que por sua vez esta no \final_data.
 
-
-# STARTING DATABASE CONTAINERS
-In the project folder ("\Projeto-techincidium"), run the following code to create the PostgreSQL database:
-
+# Começando
+Na pasta do projeto ("\Projeto-techincidium"), rode o seguinte código para criar a database PostgreSQL:
 
 ```
 docker-compose up -d 
 ```
-If you want to view the log, run it without the -d option. Just be careful not to stop the container when trying to exit the log. If it is stopped, simply restart the container.
 
-Next, create the MySQL database with the following codes:
+Se você deseja vizualizar o log, rode o códgio com -d. Lembre-se de tomar cuidado para não parar o conteiner na hora de sair do log. Se parar, reinicie o conteiner.
+
+Proximo passo, criea a database MySQL com os seguintes códigos:
 
 ```
 cd final_data
@@ -36,8 +35,8 @@ docker-compose up -d
 
 cd..
 ```
-# PIPELINE
-With both Docker instances up and running, you can proceed to execute the pipeline with the following codes:
+# Pipeline
+Após a execução da etapa anterior e com ambos Dockers ligados, você deve executar os seguintes códigos:
 
 ```
 cd python
@@ -45,26 +44,25 @@ cd python
 python pipeline.py 1996-01-01 1996-12-31 sql.json
 ```
 
-The first date corresponds to the start date parameter, and the second corresponds to the end date parameter.
+A primeira data corresponde ao início do parâmetro, e a segunda ao final.
 
-The third parameter specifies a json file where we set which SQL file we will execute in the PostgreSQL extraction (to avoid having to run all tables in case the pipeline needs to be run again).
+O terceiro parâmetro especifica um arquivo json onde nos definimos qual arquivo SQL iremos executar na extração do PostgreSQL (para evitar rodar todas as tabelas sempre que for necessario uma nova execução da pipeline).
 
-If you want to run only the PostgreSQL database extraction step:
+Se você quiser rodar somente a extração do PostgreSQL:
 ```
 cd python
 
 python extraction.py 1996-01-01 1996-12-31 sql.json
 ```
 
-If you want to run only the CSV extraction step:
+Se você quiser rodar somente a extração do CSV:
 ```
 cd python
 
 python csv_extraction.py
 ```
 
-If you want to run only the MySQL table loading step:
-
+Se você quiser rodar somente o carregamento para o MySQL:
 ```
 python load.py 1996-01-01 1996-12-31
 ```
