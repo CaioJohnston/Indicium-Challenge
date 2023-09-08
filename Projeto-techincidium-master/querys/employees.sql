@@ -1,0 +1,3 @@
+Select
+*
+from public.employees

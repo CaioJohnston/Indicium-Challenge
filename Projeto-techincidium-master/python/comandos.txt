@@ -1,0 +1,7 @@
+python extraction.py 1996-01-01 1996-12-31 sql.json
+
+python csv_extraction.py
+
+python load.py
+
+python pipeline.py 1996-01-01 1996-12-31 sql.json
