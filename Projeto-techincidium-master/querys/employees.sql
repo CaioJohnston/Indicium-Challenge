@@ -1,3 +1,0 @@
-Select
-*
-from public.employees

@@ -1,4 +1,0 @@
-{
-    "scripts":["employees.sql","orders.sql","employee_territories.sql","categories.sql","customer_customer_demo.sql",
-    "customer_demographics.sql","region.sql","shippers.sql","suppliers.sql","territories.sql","us_states.sql","products.sql"]
-}
