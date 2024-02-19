@@ -1,5 +1,5 @@
 # Pipeline feita e testada em um ambiente Windows
-# Foi utilizado Docker Compose para "setar" as Databases
+# Foi utilizado Docker Compose para carregar as Databases
 # Bibliotecas utilizadas
 
 ```
